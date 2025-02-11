@@ -2,12 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ValidationError
 import re
-from utils.Avaliador import valida_cpf
+from utils.validacpf import valida_cpf
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name='Usuário')
     idade = models.PositiveIntegerField()
-    data_nascimento = models.DateField(verbose_name='Data de Nascimento')
+    data_nascimento = models.DateField()
     cpf = models.CharField(max_length=11, verbose_name='CPF')
     endereco = models.CharField(max_length=50,verbose_name='Endereço')
     numero = models.CharField(max_length=5, verbose_name='Número')
